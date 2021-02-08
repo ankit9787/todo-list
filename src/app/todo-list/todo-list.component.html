@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="todo-box">
+    <div class="add-row">
+      <input
+        class="itemNameText"
+        type="text"
+        name="itemName"
+        #itemName
+        placeholder="Please enter here"
+      />
+      <button
+        class="btn btn-lg btn-primary add-button"
+        (click)="add_item(itemName.value)"
+      >
+        Add
+      </button>
+    </div>
+    <div class="checklist">
+      <div *ngFor="let item of items">
+        <input
+          type="checkbox"
+          name="itemCheckBox"
+          (change)="refresh_list($event, item)"
+        />
+        {{ item }}
+      </div>
+    </div>
+    <hr
+      style="
+        height: 1px;
+        border-width: 0;
+        color: rgb(44, 44, 44);
+        background-color: gray;
+      "
+    />
+    <div class="checked">
+      <div *ngFor="let checkedItem of itemsChecked">
+        <input
+          type="checkbox"
+          name="itemsChecked"
+          checked="true"
+          (change)="refresh_list($event, checkedItem)"
+        /><s>{{ checkedItem }}</s>
+      </div>
+    </div>
+  </div>
+</div>
