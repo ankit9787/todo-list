@@ -10,9 +10,15 @@
       />
       <button
         class="btn btn-lg btn-primary add-button"
-        (click)="add_item(itemName.value)"
+        (click)="addItem(itemName.value); itemName.value='';"
       >
         Add
+      </button>
+      <button
+        class="btn btn-lg btn-warn add-button" style="background-color: #675129;"
+        (click)="reset(); itemName.value='';"
+      >
+        Reset
       </button>
     </div>
     <div class="checklist">
@@ -20,7 +26,7 @@
         <input
           type="checkbox"
           name="itemCheckBox"
-          (change)="refresh_list($event, item)"
+          (change)="refreshList($event, item)"
         />
         {{ item }}
       </div>
@@ -39,7 +45,7 @@
           type="checkbox"
           name="itemsChecked"
           checked="true"
-          (change)="refresh_list($event, checkedItem)"
+          (change)="refreshList($event, checkedItem)"
         /><s>{{ checkedItem }}</s>
       </div>
     </div>
