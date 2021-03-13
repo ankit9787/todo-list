@@ -20,13 +20,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout inside repo
-        users: actions/checkout@main
+        uses: actions/checkout@main
       - name: install dependencies
         run: npm ci
       - name: build dependencies
         run: npm rum build
       - name: artifacts
-        users: actions/upload-artifact@main
+        uses: actions/upload-artifact@main
         with:
           name: dist
           path: dist
@@ -36,14 +36,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout inside repo
-        users: actions/checkout@main
+        uses: actions/checkout@main
       - name: download artifact
-        users: actions/download-artifact@main
+        uses: actions/download-artifact@main
         with:
           name: dist
           path: dist
       - name: deploy to firebase
-        users: w9jds/firebase-action@master
+        uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
         env: 
